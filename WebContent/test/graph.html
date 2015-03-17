@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../js/kinetic-v5.1.0.min.js"></script>
+<script src="../js/EasyGraph.js"></script>
+<style>
+canvas {border-style:solid;}
+</style>
+</head>
+<body>
+   	<div id="kinetic" style="height: 1000px;  width: 1300px"></div>
+
+	<button onclick="monGraph.gridArrange();">GridArrange</button>
+	<button onclick="monGraph.playWithPhysics(60);">Play with Physics</button>
+	<button onclick="monGraph.stopPhysics();">Stop Physics</button>
+
+
+	<script>
+		monGraph = new EasyGraph.Graph("kinetic","Graphe1");
+	
+	
+		nb_sommets = 15;
+
+		for(i=0;i<nb_sommets;i++){
+			new EasyGraph.Vertex({id:i.toString()});
+		}
+		
+		
+		for(i=0;i<nb_sommets;i++){
+			for(j=i+1;j<nb_sommets;j++){
+					new EasyGraph.Edge({idvertex1:i.toString(),idvertex2:j.toString(),spring_l:400});
+			}
+		}
+	
+
+		monGraph.gridArrange();
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="jquery.js" type="text/javascript"></script>
+<script src="jquery.tagcanvas.js" type="text/javascript"></script>
+<style>
+canvas {border-style:solid;}
+</style>
+</head>
+<body>
+<div id="myCanvasContainer">
+ <canvas width="300" height="300" id="myCanvas">
+  <p>In Internet Explorer versions up to 8, things inside the canvas are inaccessible!</p>
+ </canvas>
+</div>
+ 
+<div id="tags">
+ <ul>
+  <li><a href="http://www.google.com" target="_blank">Google</a></li>
+  <li><a href="/fish">Fish</a></li>
+  <li><a href="/chips">Chips</a></li>
+  <li><a href="/salt">Salt</a></li>
+  <li><a href="/vinegar">Vinegar</a></li>
+ </ul>
+</div>
+	<script>
+		 $(document).ready(function() {
+   if( ! $('#myCanvas').tagcanvas({
+     textColour : '#00f',
+     outlineThickness : 1,
+     maxSpeed : 0.03,
+     depth : 0.75
+   },'tags')) {
+     // TagCanvas failed to load
+     $('#myCanvasContainer').hide();
+   }
+   // your other jQuery stuff here...
+ });
+	</script>
+</body>
+</html>
