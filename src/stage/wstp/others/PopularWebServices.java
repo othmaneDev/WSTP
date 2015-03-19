@@ -33,9 +33,9 @@ public class PopularWebServices implements Serializable,Comparable<PopularWebSer
 		
 		int res=this.nombreWebServices-o.getNombreWebServices();
 		if(res > 0)
-			return -1;
+			return -1;//On met -1 comme resultat afin d'avoir une liste triée de manière croissante
 		if(res < 0)
-			return 1;
+			return 1;//On met 1 si le resulat de la comparaison s'avère négative comme resultat afin d'avoir une liste triée de manière croissante
 		
 		return 0;
 	}
