@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Web Service Tagging Platform - Tags Statistic</title>
+    <title>Web Service Tagging Platform - WebServices Statistic</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -114,7 +114,7 @@
     <div class="container">
     	<div class="row">
 		    <div class="page-header centerfy">
-		    	<h1>Tag's Statistic</h1>
+		    	<h1>WebService's Statistic</h1>
 			</div>
 			<div id="chartContainer" style="height: ${hauteurStats}; width: 100%;"></div>
 		</div>
@@ -134,12 +134,12 @@
 					text: "${ titleStats}"              
 				},
 				axisX:{ 
-					title: "Tag",
+					title: "Category",
 					titleFontColor : "steelBlue",
 				},
 				 
 				axisY:{ 
-					title: "Popularité",
+					title: "Number of WebServices",
 					titleFontColor : "steelBlue",
 				},
 				animationEnabled: true,   // change to true
@@ -148,8 +148,8 @@
 					type: "column",
 					color: "steelBlue",
 					dataPoints:[
-					            <c:forEach var="Statstag" items="${ tagListStats }">
-					            	{ label:"${ Statstag.getTag().name }", y:${ Statstag.getNombreOccur()} },
+					            <c:forEach var="popularWebService" items="${ popularWebServiceList }">
+					            	{ label:"${ popularWebService.getNomCategory() }", y:${popularWebService.getNombreWebServices()}},
 					            </c:forEach>
 					           ]
 				}

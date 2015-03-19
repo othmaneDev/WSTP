@@ -35,6 +35,9 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="StatisticTag">Tag's Statistic</a></li>
                 </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="StatisticWebService">WebService's Statistic</a></li>
+                </ul>
             </div>
           	<div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-body">
