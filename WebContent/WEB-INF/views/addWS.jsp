@@ -24,7 +24,7 @@
 	<div class="jumbotron col-md-6">
 	
 	  <div class="form-group">
-	    <label for="wsName">WS Name</label>
+	    <label for="wsName">WS Name *</label>
 	    <input type="text" class="form-control" id="wsName" name="wsName" placeholder="Enter WS name" required>
 	  </div>
 	  <div class="form-group">
@@ -33,12 +33,12 @@
 	  </div>
 	  
 	  <div class="form-group">
-	    <label for="wsURL">WS URL</label>
+	    <label for="wsURL">WS URL *</label>
 	    <input type="text" class="form-control" id="wsURL" placeholder="WS URL" name="wsURL" required>
 	  </div>
 	  
 	  <div class="form-group">
-	    <label for="catName">Category</label>
+	    <label for="catName">Category *</label>
 	    <input required type="text" class="form-control" id="catName" placeholder="Category name" name="catName" onkeyup="EasySuggest.suggest(catlist,'catName','suggestions')">
 	    <u>Suggestions</u><strong><ul id="suggestions" class="list-inline"></ul></strong>
 	  </div>
@@ -50,6 +50,7 @@
 				<label id="hrest_name"></label>
 		   <!--  <p class="help-block">Upload Hrest file.</p>-->
 		  </div>
+		<span><i>* = Required field</i></span>
    </div>
   
   <div class="row col-md-5 col-md-offset-1">
