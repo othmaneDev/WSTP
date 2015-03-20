@@ -63,6 +63,9 @@ public class TagDAO {
 		}
 	}
 	
+	/*
+	 * fonction pour trouver les tags les plus populaires pour le nuage de tag 
+	 */
 	public List<PopularTag> findMostPopularTags(){
 		TypedQuery<Object[]> q = em.createNamedQuery("Tag.findMostPopularTags",Object[].class);
 		try{
@@ -79,6 +82,10 @@ public class TagDAO {
 		}
 	}
 
+	
+	/* 
+	 * fonction pour récupérer les données pour le graphe de statistique. le tag sur le nombre de fois qu'il a été utilisé
+	 */
 	public List<PopularTag> StatisticTag(){
 		TypedQuery<Object[]> q = em.createNamedQuery("Tag.findMostPopularTags",Object[].class);
 		try{

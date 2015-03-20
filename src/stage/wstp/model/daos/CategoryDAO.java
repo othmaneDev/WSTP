@@ -1,4 +1,5 @@
 package stage.wstp.model.daos;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -6,7 +7,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
 import stage.wstp.model.entities.Category;
+import stage.wstp.model.entities.Tag;
+import stage.wstp.model.entities.WebService;
+import stage.wstp.others.PopularTag;
+import stage.wstp.others.PopularWebServices;
 @Stateless
 public class CategoryDAO {
 
@@ -46,6 +53,22 @@ public class CategoryDAO {
 			return null;
 		}
 	}
+	//Fonction permettant d'avoir des statistics sur la liste des webservices par catégorie
+	/*public List<PopularWebServices> StatisticWebService(){
+		TypedQuery<Object[]> q = em.createNamedQuery("Category.findWebServicesByCategory",Object[].class);
+		try{
+			List<PopularWebServices> resultList =  new ArrayList<PopularWebServices>();
+			List<Object[]> results = q.getResultList();
+			for (Object[] result : results) {
+				resultList.add(new PopularWebServices((Category)result[0], (Long)result[1]));
+			}
+			  
+			return resultList;
+		}
+		catch(NoResultException e){
+			return null;
+		}
+	}*/
 	
 	public Category findOrCreate(String name){
 		Category cat = find(name);
