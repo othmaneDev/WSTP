@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.junit.Before;
@@ -100,7 +101,7 @@ public class SearchByTagTest {
 		for(int i = 0; i< 3; i++){
 		
 			WebService ws = new WebService();
-			ws.setIdWebService(i);
+			ws.setIdWebService(i+2);
 			for(int y = 0 ;y< listTagPerWS.get(i).size();y++){
 				
 				WSTagAssociation wsta = new WSTagAssociation();
@@ -181,7 +182,7 @@ public class SearchByTagTest {
 	}
 	
 	@Test
-	public void TesttransformWSNReduc(){
+	public void TestReductRequest(){
 		
 		testTransform.reductRequest(requestSemanticList);
 		
@@ -189,11 +190,47 @@ public class SearchByTagTest {
 		
         HashMap<Integer,HashMap<String, Double>> resReduc = testTransformWS.reducTransformWS(res);
 
-        for(int y = 0; y < resReduc.size() ;y++){
-        	assertTrue("failure - unable to transform WebServiceList",true);
+        List<String> resKey = new ArrayList<String>();
+        resKey.add("music");
+        resKey.add("social");
+        resKey.add("video");
+        resKey.add("video");
+        resKey.add("audio");
+        resKey.add("add");
+        resKey.add("lunch");
+        resKey.add("diet");
+        resKey.add("dinner");
+        int j = 0;
+        
+        for(Entry<Integer, HashMap<String, Double>> resReducRes : resReduc.entrySet()){
+        	for(Entry<String, Double> r : resReducRes.getValue().entrySet()){
+        		assertTrue("failure - unable to transform WebServiceList",r.getKey().equals(resKey.get(j)));
+        		j++;
+        	}
 		}
         
 	}
+	
+	@Test
+	public void TestgetWebServiceFromAllTags(){
+		
+		testTransform.reductRequest(requestSemanticList);
+		
+		ArrayList<TamponTagwS> res = testTransformWS.transformWS(listOfWS,requestSemanticList);
+		
+        HashMap<Integer,HashMap<String, Double>> resReduc = testTransformWS.reducTransformWS(res);
+		
+        HashMap<Integer,WebService> finalWS= testTransformWS.getWebServiceFromAllTags(resReduc);
+        List<Integer>sizeRes = new ArrayList<Integer>();
+        sizeRes.add(3);
+        sizeRes.add(2);
+        sizeRes.add(4);
+        int i = 0;
+        for(Entry<Integer, WebService> wsFin : finalWS.entrySet()){
+        	assertTrue("Failed to create webService from all Tag",wsFin.getValue().getWstagAssociations().size() == sizeRes.get(i));
+        	i++;
+        }
+     }
 	
 	
 }

@@ -46,12 +46,12 @@ public class WSCompare {
 			
 			for(WSTagAssociation tgtwsta : tgt.getWstagAssociations()){
 				
-				if(tgtwsta.getTag().getIdTag() == reqwsta.getTag().getIdTag()){
+				//if(tgtwsta.getTag().getIdTag() == reqwsta.getTag().getIdTag()){
+				if(tgtwsta.getTag().getName().equals(reqwsta.getTag().getName())){
 					sum+= Math.min(reqwsta.getWeight(), tgtwsta.getWeight());
 					numberTagstgt += 1;
 				}
 			}
-			
 			weightReq+= reqwsta.getWeight();
 			numberTagsreq += 1;
 		}
