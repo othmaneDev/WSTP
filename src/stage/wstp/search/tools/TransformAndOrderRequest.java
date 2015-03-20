@@ -29,15 +29,21 @@ public class TransformAndOrderRequest {
 		ArrayList<RequestSemantic> requestSemanticList = new ArrayList<RequestSemantic>();
 		
 		for(String tagInfo : requestInitial){
-			
 			String[] tagNameNWeight = tagInfo.split(":");
 			String nameTag = tagNameNWeight[0];
 			String weightTag = tagNameNWeight[1];
 			Set synonyms;
 			try{
-				 synonyms = new HashSet((List<String>) WordNetTool.getInstance().getSynonymsTags(nameTag).subList(0, 4));
+				List<String> original = WordNetTool.getInstance().getSynonymsTags(nameTag);
+				int limits = 2;
+				if(original.size()>limits){
+					synonyms = new HashSet((List<String>) original.subList(0,limits));
+				}else{
+					synonyms = new HashSet((ArrayList<String>) original);
+				}
+				 
 			}catch(Exception e){
-				 synonyms = new HashSet((ArrayList<String>) WordNetTool.getInstance().getSynonymsTags(nameTag));
+				synonyms = new HashSet();
 			}
 			
 			synonyms.add(nameTag.toLowerCase());
