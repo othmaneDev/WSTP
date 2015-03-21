@@ -140,17 +140,17 @@ private static final long serialVersionUID = 1L;
 		Collections.sort(WSClassment);
 		//request.setAttribute("WSClassment",WSClassment);
 		
-		MultiMap multiMap = new MultiValueMap();//Initialisation de la MultiMap 
+		MultiValueMap multiMap = new MultiValueMap();//Initialisation de la MultiMap 
 		for(ClassifiedWS wsClassified : WSClassment){
 			
 			multiMap.put(wsClassified.getWS().getCategory().getName(),wsClassified);
 		}
 		Set<String> keys = multiMap.keySet();//On récupère la liste des catégories en relation avec les tags de recherche
 		 
-
+        
 	    request.getSession().setAttribute("multiMap", multiMap);
 	    request.setAttribute("keys", keys);
-		
+	    request.setAttribute("WSClassment", keys);
 		request.setAttribute("success",0);
 		
 		//un fil d'ariane pour se repérer dans la navigation

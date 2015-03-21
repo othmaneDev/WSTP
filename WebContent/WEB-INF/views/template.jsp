@@ -19,7 +19,23 @@
     <!-- Custom styles for this template -->
     <!-- <link href="style.css" rel="stylesheet">-->
 	<style type="text/css">
-	
+	    span.moreBtn{
+	    color:#030404;
+        horizontal-align:right;
+        font-weight:bold;
+	    }
+	    span.moreBtn:hover{
+	    text-decoration:underline;
+	    }
+	    a.cat
+        { 
+         color:#030404;
+         text-decoration:none; 
+        
+         } 
+        a.cat:hover 
+        { color: blue ; 
+         }
 		html,body {
 			margin:0;
 			padding:0;
