@@ -130,7 +130,10 @@ private static final long serialVersionUID = 1L;
 			multiMap.put(wsClassified.getWS().getCategory().getName(),wsClassified);
 		}
 		Set<String> keys = multiMap.keySet();//On récupère la liste des catégories en relation avec les tags de recherche
-		 
+		/*for(String key:keys){
+			System.out.println("key:"+key);
+			System.out.println("Value"+multiMap.get(key));
+		}*/
         
 	    request.getSession().setAttribute("multiMap", multiMap);
 	    request.setAttribute("keys", keys);

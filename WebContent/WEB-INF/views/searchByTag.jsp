@@ -9,14 +9,14 @@
 <div class="col-md-4  bordered-shadow  wsFiche">
     <h4><span class="label label-default"><c:out value="${multiMapEntry.key}"/></span></h4>
     <c:set var="i" value="1" />
-    <c:if test="${i<3}">
     <c:forEach var="currentValue" items="${multiMapEntry.value}">
+    <c:if test="${i<3}">
     <span><a class="cat" href="WS?wsId=${currentValue.WS.idWebService}">${currentValue.WS.name}</a></span>&nbsp;&nbsp;
     <c:set var="i" value="${i+1 }" />
-    </c:forEach>
-    <c:if test="${i>3}">
-    <span  class="moreBtn"  data-toggle="modal" data-target="#ListOfWebServices${multiMapEntry.key}">MORE</span>
     </c:if>
+    </c:forEach>
+    <c:if test="${i>2}">
+    <span  class="moreBtn"  data-toggle="modal" data-target="#ListOfWebServices${multiMapEntry.key}">MORE</span>
     </c:if>
     <div class="modal fade" id="ListOfWebServices${multiMapEntry.key}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
