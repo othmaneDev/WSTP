@@ -165,7 +165,7 @@ public class AddWS extends HttpServlet {
 			wsDAO.update(ws);
 		}else{
 			//retourne un message d'erreur pour avertir l'utilisateur qu'un web service du même nom existe déjà
-			request.setAttribute("errorMSTemplate","Un web service possédant le nom "+wsName+" existe déjà!");
+			request.setAttribute("errorMSTemplate","The web service name "+wsName+" already exists!");
 		}
 		
 		request.setAttribute("TagList",tagDAO.findMostPopularTags());
