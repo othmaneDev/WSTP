@@ -1,5 +1,11 @@
 package stage.wstp.search.tools;
 
+/**
+ * Un objet qui permet de transformer un web service en un simple objet possédant l'id du web service, ses tags associés et leurs poids.
+ * Cette transformation permet un traitement plus simple des données pour la transformation d'un web service.
+ * @author Emmanuel
+ *
+ */
 public class TamponTagwS {
 
 	private int idWebService;

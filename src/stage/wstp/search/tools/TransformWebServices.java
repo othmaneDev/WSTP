@@ -10,15 +10,25 @@ import org.apache.commons.collections.map.HashedMap;
 import stage.wstp.model.entities.Tag;
 import stage.wstp.model.entities.WSTagAssociation;
 import stage.wstp.model.entities.WebService;
-
+/**
+ * Classe qui permet de transformer les web services en utilisant le tableau de correspondance de la requête transformé en RequestSemantic. 
+ * @see RequestSemantic
+ * @author Emmanuel
+ *
+ */
 public class TransformWebServices {
 
 	public TransformWebServices(){
 		
 	}
 	
+	/*
+	 * transforme une liste de web service en tableau comprenant l'id du web service, le nom du tag et son poids.
+	 * Ensuite compare le nom du tag avec le tableau de correspondance et si matching il y a alors il remplace le nom du tag par le nom du tag de la requête.
+	 * */
 	public ArrayList<TamponTagwS> transformWS(List<WebService> webServices, ArrayList<RequestSemantic> requestSemanticRef){
 
+		/*transformation en tableau de la liste des web services*/
 		ArrayList<TamponTagwS> allTagWS = new ArrayList<TamponTagwS>();
 		
 		for(WebService wStoTransform : webServices){
@@ -29,6 +39,7 @@ public class TransformWebServices {
 			}
 		}
 		
+		/* remplace le nom des tags du web service par celui de la requête si ils ont le même sens*/
 		for(TamponTagwS tpTagWS : allTagWS){
 			
 			int i = 0;
@@ -46,6 +57,9 @@ public class TransformWebServices {
 		return allTagWS;
 	}
 	
+	/* une fois que l'on a le tableau modifié, il faut le restructurer en liste de web services pour la comparaison,
+	 * on utilise une hashMap pour restructurer par web service leurs tags respectifs modifié. Si il y un doublon dans 
+	 * un web service on garde le poids le plus élevé. */
 	public HashMap<Integer, HashMap<String,Double>> reducTransformWS(ArrayList<TamponTagwS> allTags){
 		
 		HashMap<Integer, HashMap<String,Double>> listTagChangeWS = new HashMap();
@@ -73,6 +87,7 @@ public class TransformWebServices {
 		return listTagChangeWS;
 	}
 	
+	/* une fois que l'on a finit de restructurer les web services grâce à la HashMap on peut procéder à la création des web services correspondant*/
 	public HashMap<Integer,WebService> getWebServiceFromAllTags(HashMap<Integer,HashMap<String, Double>> newTagForWS){
 		
 		HashMap<Integer,WebService> newWSList = new HashMap<Integer, WebService>();

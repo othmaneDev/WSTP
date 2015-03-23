@@ -17,13 +17,19 @@ import stage.wstp.model.entities.WSTagAssociation;
 import stage.wstp.model.entities.WebService;
 import stage.wstp.others.WordNetTool;
 
+/**
+ * Classe qui permet de transformer la requête de l'utilisateur afin d'avoir pour chaque tags présents un tableau de synonyme associé.
+ * @see RequestSemantic
+ * @author Emmanuel
+ *
+ */
 public class TransformAndOrderRequest {
 
 	public TransformAndOrderRequest(){
 		
 	}
 	
-	//fonction qui transforme une requête standard de recherche de web services par tag en collection de RequestSemantic
+	/*fonction qui transforme une requête standard de recherche de web services par tag en collection de RequestSemantic */
 	public ArrayList<RequestSemantic> transformRequest(List<String> requestInitial){
 		
 		ArrayList<RequestSemantic> requestSemanticList = new ArrayList<RequestSemantic>();
@@ -54,7 +60,7 @@ public class TransformAndOrderRequest {
 		return requestSemanticList;
 	}
 	
-	//fonction qui trie par ordre décroissant les RequestSemantic
+	/*fonction qui trie par ordre décroissant les RequestSemantic*/
 	public ArrayList<RequestSemantic> OrderRequest(ArrayList<RequestSemantic> requestInitial){
 		
 		//Sorting
@@ -63,7 +69,7 @@ public class TransformAndOrderRequest {
 		        public int compare(RequestSemantic  rS1, RequestSemantic  rS2)
 		        {
 
-		            return  rS2.getWeight()-rS1.getWeight();//fruite1.fruitName.compareTo(fruite2.fruitName);
+		            return  rS2.getWeight()-rS1.getWeight();
 		        }
 
 		    });
@@ -71,7 +77,7 @@ public class TransformAndOrderRequest {
 		return requestInitial;
 	}
 	
-	//fonction qui réduit le tableau de RequestSemantic en concaténant les requêtes avec des tags indentiques
+	/*fonction qui réduit le tableau de RequestSemantic en concaténant les requêtes avec des tags indentiques*/
 	public void reductRequest(ArrayList<RequestSemantic> requestSemanticOrder){
 		HashMap<Integer, List<String> > hashMapSynon = new HashMap<Integer, List<String> >();
 		RequestSemantic rS;
@@ -102,6 +108,7 @@ public class TransformAndOrderRequest {
 		}
 	}
 	
+	/* transforme la requête modifié présent sous la forme de RequestSemantic en Web service utilisable pour la comparaison*/
 	public WebService getWebServiceRequest(ArrayList<RequestSemantic> requestSemanticList, CategoryDAO catDAO,TagDAO tagDAO){
 		
 		WebService ws = new WebService();

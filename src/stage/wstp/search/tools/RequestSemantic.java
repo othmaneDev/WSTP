@@ -3,6 +3,11 @@ package stage.wstp.search.tools;
 import java.io.Serializable;
 import java.util.Set;
 
+/**
+ * Classe afin de structurer la requête de l'utilisateur en rajoutant à chaque tag de la requête son poids et un tableau de synonyme afin de l'utilisé pour réaliser une recherche plus poussé qu'une simple comparaison de chaine de caractère.
+ * @author Emmanuel
+ *
+ */
 public class RequestSemantic implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
