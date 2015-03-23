@@ -146,7 +146,6 @@
 				data: [              
 				{
 					type: "column",
-					color: "steelBlue",
 					dataPoints:[
 					            <c:forEach var="Statstag" items="${ tagListStats }">
 					            	{ label:"${ Statstag.getTag().name }", y:${ Statstag.getNombreOccur()} },
