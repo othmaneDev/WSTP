@@ -8,9 +8,9 @@ public class WSCompare {
 	/**
 	 * coefficient de formule de recherche
 	 */
-	public static Double WeightPoids = 0.45;
-	public static Double WeightNbTags = 0.45;
-	public static Double WeightNbVotes = 0.10;
+	public static Double WeightPoids = 0.49;
+	public static Double WeightNbTags = 0.49;
+	public static Double WeightNbVotes = 0.02;
 	
 	public static double compareOld(WebService req, WebService tgt){
 	
@@ -46,7 +46,6 @@ public class WSCompare {
 			
 			for(WSTagAssociation tgtwsta : tgt.getWstagAssociations()){
 				
-				//if(tgtwsta.getTag().getIdTag() == reqwsta.getTag().getIdTag()){
 				if(tgtwsta.getTag().getName().equals(reqwsta.getTag().getName())){
 					sum+= Math.min(reqwsta.getWeight(), tgtwsta.getWeight());
 					numberTagstgt += 1;

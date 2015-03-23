@@ -105,9 +105,9 @@ public class AddWS extends HttpServlet {
 				int i = fileName.lastIndexOf('.');
 				if (i >= 0) {
 				    ext = fileName.substring(i+1);
+				    ws.setFileName(ws.getIdWebService()+"."+ext);
+					part.write(ws.getIdWebService()+"."+ext);
 				}
-				ws.setFileName(ws.getIdWebService()+"."+ext);
-				part.write(ws.getIdWebService()+"."+ext);
 			}
 			
 			
