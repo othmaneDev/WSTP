@@ -129,7 +129,7 @@
    	<script type="text/javascript">
 		window.onload = function () {
 			var chart = new CanvasJS.Chart("chartContainer", {
-				theme: "theme2",//theme1
+			
 				title:{
 					text: "${ titleStats}"              
 				},
@@ -146,7 +146,6 @@
 				data: [              
 				{
 					type: "column",
-					color: "steelBlue",
 					dataPoints:[
 					            <c:forEach var="popularWebService" items="${ popularWebServiceList }">
 					            	{ label:"${ popularWebService.getNomCategory() }", y:${popularWebService.getNombreWebServices()}},
