@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 17 Mars 2015 à 15:09
+-- Généré le: Lun 23 Mars 2015 à 12:09
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `idCategory` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`idCategory`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 -- --------------------------------------------------------
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `tag` (
   `description` text,
   `popularity` int(11) NOT NULL,
   PRIMARY KEY (`idTag`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=74 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=107 ;
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `userwsassociation` (
   PRIMARY KEY (`idUserWSAssociation`),
   KEY `User_idUser` (`User_idUser`),
   KEY `WebService_idWebService` (`WebService_idWebService`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `name` varchar(255) NOT NULL,
   `level` int(11) NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 -- --------------------------------------------------------
 
@@ -88,9 +88,10 @@ CREATE TABLE IF NOT EXISTS `webservice` (
   `popularity` int(11) DEFAULT NULL,
   `URL` varchar(255) DEFAULT NULL,
   `date_dernier_tag` timestamp NULL DEFAULT NULL,
+  `fileName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idWebService`),
   KEY `fk_WebService_Category_idx` (`Category_idCategory`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=54 ;
 
 -- --------------------------------------------------------
 
@@ -107,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `wstagassociation` (
   PRIMARY KEY (`idWSTagAssociation`),
   KEY `fk_WebService_has_Tag_Tag1_idx` (`Tag_idTag`),
   KEY `fk_WebService_has_Tag_WebService1_idx` (`WebService_idWebService`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=86 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=124 ;
 
 --
 -- Contraintes pour les tables exportées

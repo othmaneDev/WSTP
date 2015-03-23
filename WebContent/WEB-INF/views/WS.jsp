@@ -10,8 +10,9 @@
 	
 	<div class="row">
 		<div class="col-md-12"><h4><b>Description: </b></h4> <p class="text-justify"><c:out value="${ ws.description }"/></p></div>
-		
-		<div class="col-md-12"><h4><a target="_blank" href="http://localhost:80/hrest/<c:out value="${ ws.idWebService }"/>.html">Web service's description</a></h4></div>
+		<c:if test="${! empty ws.fileName}"> 
+		<div class="col-md-12"><h4><a target="_blank" href="Ressources/<c:out value="${ ws.fileName }"/>">Web service's description</a></h4></div>
+		</c:if>
 	</div>
 	
 	<div class="row">

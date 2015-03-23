@@ -29,6 +29,9 @@ public class WebService implements Serializable {
 	@Lob
 	private String description;
 
+	@Column(name="fileName",length=255)
+	private String fileName;
+	
 	@Column(nullable=false, length=255)
 	private String name;
 	
@@ -48,6 +51,20 @@ public class WebService implements Serializable {
 	public void setDateDernierTag(Timestamp dateDernierTag) {
 		this.dateDernierTag = dateDernierTag;
 	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public void setUserWSAssociations(List<UserWSAssociation> userWSAssociations) {
+		this.userWSAssociations = userWSAssociations;
+	}
+
+
 
 	//bi-directional many-to-one association to WSTagAssociation
 	@OneToMany(mappedBy="webService")

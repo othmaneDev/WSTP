@@ -30,7 +30,7 @@ import stage.wstp.others.VerificationSyntaxe;
  * Servlet implementation class AddWS
  */
 @WebServlet("/AddWS")
-@MultipartConfig(location="C:\\hrest_files", fileSizeThreshold=1024*1024, maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5)
+@MultipartConfig( location = "C://hrest_files/",fileSizeThreshold=1024*1024, maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5)
 public class AddWS extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -91,13 +91,26 @@ public class AddWS extends HttpServlet {
 			Category cat = catDAO.findOrCreate(catName);
 			ws.setCategory(cat);
 			ws.setDateDernierTag(dateDernierTag);
+			
 			wsDAO.add(ws);
 			cat.addWebService(ws);
 			catDAO.update(cat);
+			
 			Part part = request.getPart("hrest");
 			if(part != null){
-				part.write(ws.getIdWebService()+".html");
+				String fileName = part.getSubmittedFileName();
+				
+				String ext = "";
+
+				int i = fileName.lastIndexOf('.');
+				if (i >= 0) {
+				    ext = fileName.substring(i+1);
+				}
+				ws.setFileName(ws.getIdWebService()+"."+ext);
+				part.write(ws.getIdWebService()+"."+ext);
 			}
+			
+			
 			
 			String tagName;
 			String tagWeight;
