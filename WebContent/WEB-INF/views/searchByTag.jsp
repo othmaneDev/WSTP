@@ -15,7 +15,7 @@
     <c:set var="i" value="${i+1 }" />
     </c:if>
     </c:forEach>
-    <c:if test="${2<i}">
+    <c:if test="${i>2}">
     <span  class="moreBtn"  data-toggle="modal" data-target="#ListOfWebServices${multiMapEntry.key}">MORE</span>
     </c:if>
     <div class="modal fade" id="ListOfWebServices${multiMapEntry.key}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
