@@ -102,7 +102,6 @@ private static final long serialVersionUID = 1L;
 		 ArrayList<ClassifiedWS> WSClassment = new ArrayList<ClassifiedWS>();
 
 		for(Entry<Integer, WebService> wsi :listWSTransform.entrySet()){
-			
 			double ratio = WSCompare.compare(ws,wsi.getValue());
 			if(ratio > 0){
 				WebService origin = wsDAO.find(wsi.getKey());

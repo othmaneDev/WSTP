@@ -21,10 +21,6 @@ import java.util.List;
 	@NamedQuery(name="Tag.findByCategory", query="SELECT DISTINCT t FROM Tag t,WSTagAssociation wst,WebService ws WHERE t.idTag=wst.tag.idTag AND wst.webService.idWebService=ws.idWebService AND ws.category.idCategory=:idCategory")})
 
 public class Tag implements Serializable {
-	public Tag(String name) {
-		super();
-		this.name = name;
-	}
 
 	private static final long serialVersionUID = 1L;
 
@@ -47,8 +43,13 @@ public class Tag implements Serializable {
 	private List<WSTagAssociation> wstagAssociations;
 
 	public Tag() {
+		
 	}
 
+	public Tag(String name) {
+		super();
+		this.name = name;
+	}
 	public int getIdTag() {
 		return this.idTag;
 	}
