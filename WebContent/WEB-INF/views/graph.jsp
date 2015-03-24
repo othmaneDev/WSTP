@@ -5,10 +5,8 @@
 
    	<div id="kinetic" style="height: 500px;  width: 800px;"></div>
 
-	<!-- <button onclick="monGraph.gridArrange();">GridArrange</button>
-	<button onclick="monGraph.playWithPhysics(60);">Play with Physics</button>
-	<button onclick="monGraph.stopPhysics();">Stop Physics</button>
--->
+	<div id="cercleBleu">Tag</div>
+	<div id="cercleBlanc">Webservice</div>
 
 	<script>
 		monGraph = new EasyGraph.Graph("kinetic","Graphe1");

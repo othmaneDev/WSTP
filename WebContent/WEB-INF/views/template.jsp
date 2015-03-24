@@ -19,6 +19,24 @@
     <!-- Custom styles for this template -->
     <!-- <link href="style.css" rel="stylesheet">-->
 	<style type="text/css">
+		#cercleBleu{
+	    background:#7FFFD4;
+        border-radius:100%;
+        width:50px;
+        height:50px;
+        padding-top:10px;
+  	    border:2px solid; 
+  	    text-align:center;
+  	    
+	    }
+	    #cercleBlanc{
+        border-radius:100%;
+        width:100px;
+        padding-top:35px;
+        height:100px;
+  	    border:2px solid; 
+  	    text-align:center;
+	    }
 	    span.moreBtn{
 	    color:#030404;
         horizontal-align:right;
