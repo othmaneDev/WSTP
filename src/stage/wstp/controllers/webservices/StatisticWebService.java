@@ -56,8 +56,15 @@ public class StatisticWebService extends HttpServlet {
 				compteurNonPopularWS++;
 			}
 		}
+		int compteurComparaison=popularWebServiceList.get(0).getNombreWebServices();
+		for(PopularWebServices popularWS:popularWebServiceList){
+			if(compteurComparaison >popularWS.getNombreWebServices()){
+				compteurComparaison=popularWS.getNombreWebServices();
+			}
+		}
 		if(compteurNonPopularWS!=0){
-			popularWebServiceList.add(new PopularWebServices("Others",1));
+			Collections.sort(popularWebServiceList);
+			popularWebServiceList.add(new PopularWebServices("Others",compteurComparaison));
 		}
 		Collections.sort(popularWebServiceList);
 	    request.setAttribute("popularWebServiceList", popularWebServiceList);

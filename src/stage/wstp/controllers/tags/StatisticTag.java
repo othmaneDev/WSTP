@@ -2,6 +2,7 @@ package stage.wstp.controllers.tags;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -17,6 +18,7 @@ import stage.wstp.model.daos.WSTagAssociationDAO;
 import stage.wstp.model.daos.WebServiceDAO;
 import stage.wstp.model.entities.Tag;
 import stage.wstp.others.PopularTag;
+import stage.wstp.others.PopularWebServices;
 
 /**
  * Servlet implementation class EditTag
@@ -56,8 +58,14 @@ public class StatisticTag extends HttpServlet {
 				compteurNonPopularTag++;
 			}
 		}
+		Long compteurComparaison=popularTagList.get(0).getNombreOccur();
+		for(PopularTag popularTag:popularTagList){
+			if(compteurComparaison >popularTag.getNombreOccur()){
+				compteurComparaison=popularTag.getNombreOccur();
+			}
+		}
 		if (compteurNonPopularTag!=0){
-			popularTagListNew.add(new PopularTag(new Tag("Others"),1L));
+			popularTagListNew.add(new PopularTag(new Tag("Others"),compteurComparaison));
 		}
 		request.setAttribute("hauteurStats","500px");
 		request.setAttribute("tagListStats",popularTagListNew);
