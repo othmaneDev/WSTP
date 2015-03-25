@@ -3,6 +3,7 @@ package stage.wstp.controllers.webservices;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -44,32 +45,36 @@ public class StatisticWebService extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int compteurNonPopularWS=0;//Compteur pour savoir s'il existe des webservices qui sont pas populaires
 		List<Category> listCategory=new ArrayList<Category>();
-		listCategory=categoryDAO.findAll();
+		listCategory=categoryDAO.findAll();//On récupère toute les catégories
+		//On met dans une  liste "popularWebServiceList" chaque catégorie avec le nombre de webservices qu'elle contient
 		List<PopularWebServices> popularWebServiceList=new ArrayList<PopularWebServices>();
 		for(Category cat : listCategory){
-			if(cat.getWebServices().size()>1){
+			if(cat.getWebServices().size()!=0){
 				popularWebServiceList.add(new PopularWebServices(cat.getName(), cat.getWebServices().size()));
 			}
-			else{
-				compteurNonPopularWS++;
-			}
+			
 		}
+		Collections.sort(popularWebServiceList);
+		//On fait un traitement afin de récupérer dans une variable "compteurComparaison" le min des web services contenu dans toutes les catégories
 		int compteurComparaison=popularWebServiceList.get(0).getNombreWebServices();
 		for(PopularWebServices popularWS:popularWebServiceList){
 			if(compteurComparaison >popularWS.getNombreWebServices()){
 				compteurComparaison=popularWS.getNombreWebServices();
 			}
 		}
-		if(compteurNonPopularWS!=0){
-			Collections.sort(popularWebServiceList);
-			popularWebServiceList.add(new PopularWebServices("Others",compteurComparaison));
+		//On utilise ici un iterator afin de supprimer les elements de la liste ayant le meme nombre de service que le minimum(compteurComparaison)
+		for (Iterator<PopularWebServices> iterator = popularWebServiceList.iterator(); iterator.hasNext(); ) {
+			PopularWebServices  popularWS= iterator.next();
+		    if (compteurComparaison==popularWS.getNombreWebServices()) {
+		        iterator.remove();
+		    }
 		}
-		Collections.sort(popularWebServiceList);
+        //On ajout un nouveau element à la liste "Others " ayant comme nombre de services le minimum de toute la liste
+		popularWebServiceList.add(new PopularWebServices("Others",compteurComparaison));
 	    request.setAttribute("popularWebServiceList", popularWebServiceList);
 		request.setAttribute("hauteurStats","500px");
-		this.getServletContext().getRequestDispatcher( "/WEB-INF/views/StatistiqueWebService.jsp" ).forward( request, response );
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/StatistiqueWebService.jsp").forward(request, response );
 	}
 }
 

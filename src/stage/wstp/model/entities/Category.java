@@ -13,11 +13,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="Category")
-
-@NamedQueries({
-	@NamedQuery(name="Category.findAll", query="SELECT c FROM Category c"),
-	//@NamedQuery(name="Category.findWebServicesByCategory", query="SELECT DISTINCT c,count(c.webServices) FROM Category c GROUP BY c ORDER BY count(c.webServices) DESC")
-})
+@NamedQuery(name="Category.findAll", query="SELECT c FROM Category c")
 public class Category implements Serializable {
 	private static final long serialVersionUID = 1L;
 

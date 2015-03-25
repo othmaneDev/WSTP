@@ -59,13 +59,14 @@ public class StatisticTag extends HttpServlet {
 				compteurNonPopularTag++;
 			}
 		}
-		/*Traitement pour calculer le minimum de tags dans la catégorie "Others" des statistiques*/
+		//Traitement pour calculer le minimum de tags dans la catégorie "Others" des statistiques
 		Long compteurComparaison=popularTagList.get(0).getNombreOccur();
 		for(PopularTag popularTag:popularTagList){
 			if(compteurComparaison >popularTag.getNombreOccur()){
 				compteurComparaison=popularTag.getNombreOccur();
 			}
 		}
+		
 		if (compteurNonPopularTag!=0){
 			popularTagListNew.add(new PopularTag(new Tag("Others"),compteurComparaison));
 		}
