@@ -30,7 +30,6 @@ public class Category extends HttpServlet {
      */
     public Category() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

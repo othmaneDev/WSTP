@@ -44,7 +44,7 @@ public class StatisticWebService extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int compteurNonPopularWS=0;//Compteur pour savoir s'il existe des webservices qui sont pas populair
+		int compteurNonPopularWS=0;//Compteur pour savoir s'il existe des webservices qui sont pas populaires
 		List<Category> listCategory=new ArrayList<Category>();
 		listCategory=categoryDAO.findAll();
 		List<PopularWebServices> popularWebServiceList=new ArrayList<PopularWebServices>();

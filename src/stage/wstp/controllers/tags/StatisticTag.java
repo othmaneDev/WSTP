@@ -39,14 +39,15 @@ public class StatisticTag extends HttpServlet {
      */
     public StatisticTag() {
         super();
-        // TODO Auto-generated constructor stub
+       
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int compteurNonPopularTag=0;
+		//Traitement pour avoir la liste des tags les plus populaires par catégorie
+		int compteurNonPopularTag=0;//Compteur pour s'avoir s'il existe au moins une catégorie avec au plus un seul tag
 		List<PopularTag> popularTagList=new ArrayList<PopularTag>();
 		List<PopularTag> popularTagListNew=new ArrayList<PopularTag>();
 		popularTagList=tagDAO.StatisticTag();
@@ -58,6 +59,7 @@ public class StatisticTag extends HttpServlet {
 				compteurNonPopularTag++;
 			}
 		}
+		/*Traitement pour calculer le minimum de tags dans la catégorie "Others" des statistiques*/
 		Long compteurComparaison=popularTagList.get(0).getNombreOccur();
 		for(PopularTag popularTag:popularTagList){
 			if(compteurComparaison >popularTag.getNombreOccur()){
